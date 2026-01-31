@@ -1021,11 +1021,42 @@
             .footer-container {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .social-proof-bar {
+                gap: 2rem;
+                padding: 1.5rem 2rem;
+            }
+
+            .proof-stat-value {
+                font-size: 2rem;
+            }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--background);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.nav-open {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid var(--gray-200);
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+                margin-top: 0.5rem;
             }
 
             .mobile-menu-btn {
@@ -1041,8 +1072,30 @@
                 height: 500px;
             }
 
-            .features, .pricing, .affiliation, .contact {
+            .features, .pricing, .affiliation, .contact, .testimonials {
                 padding: 4rem 1.5rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            .testimonial-content {
+                font-size: 0.95rem;
+            }
+
+            .social-proof-bar {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .proof-stat-value {
+                font-size: 2rem;
             }
 
             .form-row {
@@ -1059,6 +1112,15 @@
                 height: 2px;
             }
 
+            .calendly-inline-widget {
+                min-width: 280px;
+                height: 580px;
+            }
+
+            .booking-section h4 {
+                font-size: 1rem;
+            }
+
             .footer-container {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1071,6 +1133,61 @@
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
+            }
+        }
+
+        /* Extra small screens (320px) */
+        @media (max-width: 400px) {
+            .hero {
+                padding: 5rem 1rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stat {
+                text-align: center;
+            }
+
+            .phone-mockup {
+                width: 200px;
+                height: 420px;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .features, .pricing, .affiliation, .contact, .testimonials {
+                padding: 3rem 1rem;
+            }
+
+            .feature-card,
+            .testimonial-card {
+                padding: 1.25rem;
+            }
+
+            .pricing-card {
+                padding: 1.5rem;
+            }
+
+            .calendly-inline-widget {
+                min-width: 100%;
+                height: 550px;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
             }
         }
 
@@ -1274,7 +1391,7 @@
             <a href="#affiliation">Affiliation</a>
             <a href="#contact" class="btn btn-primary">Demander une démo</a>
         </div>
-        <button class="mobile-menu-btn">☰</button>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">☰</button>
     </nav>
 
     <!-- Hero Section -->
@@ -1745,20 +1862,32 @@
             });
         });
 
-        // Mobile menu toggle (basic implementation)
+        // Mobile menu toggle with class-based approach
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
 
         mobileMenuBtn.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.right = '0';
-            navLinks.style.background = 'var(--background)';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.padding = '1rem 2rem';
-            navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            const isOpen = navLinks.classList.toggle('nav-open');
+            mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close mobile menu when clicking a nav link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-open');
+                mobileMenuBtn.textContent = '☰';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navLinks.classList.remove('nav-open');
+                mobileMenuBtn.textContent = '☰';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
         });
     </script>
 
