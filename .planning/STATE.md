@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-01-31)
 ## Current Position
 
 Phase: 1 of 3 (Foundation & Lead Capture)
-Plan: 4 of 4 in current phase (estimated)
-Status: In progress
-Last activity: 2026-01-31 - Completed 01-02-PLAN.md (Authentication System)
+Plan: 5 of 5 in current phase
+Status: Phase complete
+Last activity: 2026-01-31 - Completed 01-05-PLAN.md (Admin Leads Dashboard)
 
-Progress: [████░░░░░░] 40%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: 6 min
-- Total execution time: 0.38 hours
+- Total execution time: 0.50 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation-lead-capture | 4 | 23 min | 6 min |
+| 01-foundation-lead-capture | 5 | 30 min | 6 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (7 min), 01-03 (3 min), 01-04 (5 min), 01-02 (8 min)
+- Last 5 plans: 01-01 (7 min), 01-03 (3 min), 01-04 (5 min), 01-02 (8 min), 01-05 (7 min)
 - Trend: Consistent fast execution
 
 *Updated after each plan completion*
@@ -56,6 +56,9 @@ Recent decisions affecting current work:
 - useActionState for auth forms: React 19 hook for Server Action integration (01-02)
 - Unified auth callback route: Single route handles PKCE and OTP verification (01-02)
 - Clickresto brand colors: #E63946 primary, #1D3557 secondary, #F1FAEE background (01-02)
+- Suspense for cacheComponents: Next.js 16 requires Suspense boundaries for async Server Components (01-05)
+- Role-based sidebar: Admin sees Leads, affiliate sees Mes parrainages (01-05)
+- French status labels: Nouveau, Contacte, Qualifie, Converti, Perdu (01-05)
 
 ### Pending Todos
 
@@ -71,9 +74,9 @@ None - user setup required before testing.
 
 ## Session Continuity
 
-Last session: 2026-01-31 14:17
-Stopped at: Completed 01-02-PLAN.md (Authentication System)
+Last session: 2026-01-31 13:25
+Stopped at: Completed 01-05-PLAN.md (Admin Leads Dashboard)
 Resume file: None
 
 ---
-*Last updated: 2026-01-31 after 01-02 plan completion*
+*Last updated: 2026-01-31 after 01-05 plan completion*
