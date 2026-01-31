@@ -83,31 +83,31 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| LAND-01 | - | Pending |
-| LAND-02 | - | Pending |
-| LAND-03 | - | Pending |
-| LAND-04 | - | Pending |
-| CRM-01 | - | Pending |
-| CRM-02 | - | Pending |
-| CRM-03 | - | Pending |
-| CRM-04 | - | Pending |
-| AFF-01 | - | Pending |
-| AFF-02 | - | Pending |
-| AFF-03 | - | Pending |
-| ADM-01 | - | Pending |
-| ADM-02 | - | Pending |
-| ADM-03 | - | Pending |
-| ADM-04 | - | Pending |
-| AUTH-01 | - | Pending |
-| AUTH-02 | - | Pending |
-| AUTH-03 | - | Pending |
-| AUTH-04 | - | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Pending |
+| LAND-01 | Phase 1 | Pending |
+| LAND-02 | Phase 1 | Pending |
+| LAND-03 | Phase 1 | Pending |
+| LAND-04 | Phase 1 | Pending |
+| ADM-01 | Phase 1 | Pending |
+| CRM-02 | Phase 1 | Pending |
+| AFF-01 | Phase 2 | Pending |
+| AFF-02 | Phase 2 | Pending |
+| AFF-03 | Phase 2 | Pending |
+| ADM-02 | Phase 2 | Pending |
+| CRM-01 | Phase 3 | Pending |
+| CRM-03 | Phase 3 | Pending |
+| CRM-04 | Phase 3 | Pending |
+| ADM-03 | Phase 3 | Pending |
+| ADM-04 | Phase 3 | Pending |
 
 **Coverage:**
-- v1 requirements: 15 total
-- Mapped to phases: 0
-- Unmapped: 15 ⚠️
+- v1 requirements: 19 total
+- Mapped to phases: 19
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-01-31*
-*Last updated: 2026-01-31 after initial definition*
+*Last updated: 2026-01-31 after roadmap creation*
