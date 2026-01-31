@@ -1,8 +1,18 @@
-import { requireAuth } from "@/lib/auth";
+import { Suspense } from "react";
+import { requireAuth, type User } from "@/lib/auth";
 import { Sidebar } from "@/components/dashboard/Sidebar";
 import { Header } from "@/components/dashboard/Header";
+import { Loader2 } from "lucide-react";
 
-export default async function DashboardLayout({
+function LoadingFallback() {
+  return (
+    <div className="flex h-screen items-center justify-center bg-background">
+      <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+    </div>
+  );
+}
+
+async function DashboardShell({
   children,
 }: {
   children: React.ReactNode;
@@ -19,5 +29,17 @@ export default async function DashboardLayout({
         </main>
       </div>
     </div>
+  );
+}
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <DashboardShell>{children}</DashboardShell>
+    </Suspense>
   );
 }

@@ -1,10 +1,19 @@
-import { requireAuth } from "@/lib/auth";
+import { Suspense } from "react";
+import { requireAuth, type User } from "@/lib/auth";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Users, UserPlus, ArrowRight } from "lucide-react";
+import { Users, UserPlus, ArrowRight, Loader2 } from "lucide-react";
 
-export default async function DashboardPage() {
+function LoadingState() {
+  return (
+    <div className="flex items-center justify-center py-12">
+      <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+    </div>
+  );
+}
+
+async function DashboardContent() {
   const user = await requireAuth();
 
   return (
@@ -108,5 +117,13 @@ export default async function DashboardPage() {
         </Card>
       )}
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <DashboardContent />
+    </Suspense>
   );
 }
