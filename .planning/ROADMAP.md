@@ -28,10 +28,15 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Restaurant owner can submit demo request from landing page
   4. Admin can view all submitted leads in dashboard
   5. Lead data is automatically captured in CRM when demo form submitted
-**Plans**: TBD
+**Plans**: 6 plans
 
 Plans:
-- [ ] TBD during planning
+- [ ] 01-01-PLAN.md - Next.js + Supabase foundation setup
+- [ ] 01-02-PLAN.md - Authentication system (login, signup, magic link, password reset)
+- [ ] 01-03-PLAN.md - Landing page Supabase integration for lead capture
+- [ ] 01-04-PLAN.md - Landing page testimonials, calendar, mobile polish
+- [ ] 01-05-PLAN.md - Admin leads dashboard
+- [ ] 01-06-PLAN.md - End-to-end verification (checkpoint)
 
 ### Phase 2: Affiliate Program
 **Goal**: Affiliates can refer restaurants and track their commissions in real-time
@@ -66,14 +71,14 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3
+Phases execute in numeric order: 1 -> 2 -> 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Lead Capture | 0/TBD | Not started | - |
+| 1. Foundation & Lead Capture | 0/6 | Planned | - |
 | 2. Affiliate Program | 0/TBD | Not started | - |
 | 3. CRM & Commission Workflow | 0/TBD | Not started | - |
 
 ---
 *Roadmap created: 2026-01-31*
-*Last updated: 2026-01-31 after initial creation*
+*Last updated: 2026-01-31 after Phase 1 planning*
