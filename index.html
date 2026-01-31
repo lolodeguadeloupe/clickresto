@@ -1092,6 +1092,123 @@
         .form-success h4 {
             margin-bottom: 0.5rem;
         }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--background);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(29, 53, 87, 0.08);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(29, 53, 87, 0.12);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-family: 'DM Serif Display', serif;
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.1;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            font-size: 1.05rem;
+            color: var(--secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.875rem;
+            color: var(--neutral);
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-rating span {
+            color: #FFC107;
+            font-size: 1.125rem;
+        }
+
+        /* Social Proof Stats Bar */
+        .social-proof-bar {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(29, 53, 87, 0.08);
+        }
+
+        .proof-stat {
+            text-align: center;
+        }
+
+        .proof-stat-value {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .proof-stat-label {
+            font-size: 0.925rem;
+            color: var(--neutral);
+        }
     </style>
 </head>
 <body>
@@ -1103,6 +1220,7 @@
         </a>
         <div class="nav-links">
             <a href="#fonctionnalites">Fonctionnalités</a>
+            <a href="#temoignages">Témoignages</a>
             <a href="#tarifs">Tarifs</a>
             <a href="#affiliation">Affiliation</a>
             <a href="#contact" class="btn btn-primary">Demander une démo</a>
@@ -1236,6 +1354,90 @@
                         <li>Rappels automatiques</li>
                         <li>Communication directe</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="temoignages">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Témoignages</span>
+                <h2>Ils nous font confiance</h2>
+                <p>Découvrez ce que les restaurateurs pensent de Clickresto</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                    </div>
+                    <p class="testimonial-content">
+                        Depuis que nous avons installé Clickresto, nos commandes à emporter ont augmenté de 40%. L'application est intuitive et nos clients adorent la simplicité du click & collect.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="testimonial-info">
+                            <h4>Marie Chevalier</h4>
+                            <p>Le Petit Bistrot, Lyon</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                    </div>
+                    <p class="testimonial-content">
+                        Le programme de fidélité a transformé notre relation client. Nos habitués reviennent plus souvent et recommandent notre restaurant à leurs proches. Un investissement rentabilisé en 2 mois !
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PD</div>
+                        <div class="testimonial-info">
+                            <h4>Philippe Dubois</h4>
+                            <p>Chez Philippe, Bordeaux</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                        <span>&#9733;</span>
+                    </div>
+                    <p class="testimonial-content">
+                        Les notifications push nous permettent de remplir les créneaux creux. Une promo envoyée à 11h30 et c'est le rush au déjeuner ! L'équipe Clickresto est aussi très réactive.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SL</div>
+                        <div class="testimonial-info">
+                            <h4>Sophie Laurent</h4>
+                            <p>La Table de Sophie, Paris</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social-proof-bar">
+                <div class="proof-stat">
+                    <div class="proof-stat-value">150+</div>
+                    <div class="proof-stat-label">Restaurants partenaires</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="proof-stat-value">50k+</div>
+                    <div class="proof-stat-label">Commandes traitées</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="proof-stat-value">4.8/5</div>
+                    <div class="proof-stat-label">Note moyenne</div>
                 </div>
             </div>
         </div>
