@@ -542,7 +542,118 @@
         </div>
     </footer>
     <script>
-        // Scripts from original index.html
+        // Toggle button handler
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        const typeInput = document.querySelector('input[name="type"]');
+        const etablissementInput = document.getElementById('etablissement');
+        const etablissementRequired = document.querySelector('.required-restaurateur');
+        const messageTextarea = document.getElementById('message');
+
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                toggleBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-checked', 'false');
+                });
+                btn.classList.add('active');
+                btn.setAttribute('aria-checked', 'true');
+                typeInput.value = btn.dataset.value;
+
+                // Update etablissement required state
+                const isRestaurateur = btn.dataset.value === 'restaurateur';
+                etablissementInput.required = isRestaurateur;
+                etablissementRequired.style.display = isRestaurateur ? 'inline' : 'none';
+
+                // Update message placeholder
+                messageTextarea.placeholder = isRestaurateur
+                    ? 'Parle-nous de ton resto et de tes besoins...'
+                    : 'Dis-nous comment tu comptes nous aider à trouver des restos!';
+            });
+        });
+
+        // Form validation on submit
+        const form = document.getElementById('contactForm');
+        const formSuccess = document.querySelector('.form-success');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+            document.querySelectorAll('.form-group').forEach(el => el.classList.remove('error'));
+
+            let isValid = true;
+            let firstError = null;
+
+            // Validate nom
+            const nom = document.getElementById('nom');
+            if (!nom.value.trim()) {
+                showError(nom, 'Le nom est requis');
+                isValid = false;
+                firstError = firstError || nom;
+            }
+
+            // Validate email
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim()) {
+                showError(email, 'L\'email est requis');
+                isValid = false;
+                firstError = firstError || email;
+            } else if (!emailRegex.test(email.value)) {
+                showError(email, 'Format d\'email invalide');
+                isValid = false;
+                firstError = firstError || email;
+            }
+
+            // Validate telephone (French format: 10 digits starting with 0)
+            const telephone = document.getElementById('telephone');
+            const phoneRegex = /^0[1-9](?:[ ]?[0-9]{2}){4}$/;
+            if (!telephone.value.trim()) {
+                showError(telephone, 'Le téléphone est requis');
+                isValid = false;
+                firstError = firstError || telephone;
+            } else if (!phoneRegex.test(telephone.value.replace(/\s/g, ' ').trim())) {
+                showError(telephone, 'Format: 06 12 34 56 78');
+                isValid = false;
+                firstError = firstError || telephone;
+            }
+
+            // Validate etablissement (only if restaurateur)
+            const etablissement = document.getElementById('etablissement');
+            if (typeInput.value === 'restaurateur' && !etablissement.value.trim()) {
+                showError(etablissement, 'Le nom de l\'établissement est requis');
+                isValid = false;
+                firstError = firstError || etablissement;
+            }
+
+            if (!isValid) {
+                firstError.focus();
+                return;
+            }
+
+            // Mock success (Phase 3 will add Firebase)
+            form.style.display = 'none';
+            formSuccess.classList.add('show');
+        });
+
+        function showError(input, message) {
+            const errorEl = document.getElementById(input.id + '-error');
+            errorEl.textContent = message;
+            input.closest('.form-group').classList.add('error');
+        }
+
+        // Clear error on blur after correction
+        ['nom', 'email', 'telephone', 'etablissement'].forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            field.addEventListener('blur', () => {
+                const group = field.closest('.form-group');
+                if (group.classList.contains('error') && field.value.trim()) {
+                    group.classList.remove('error');
+                    document.getElementById(fieldId + '-error').textContent = '';
+                }
+            });
+        });
     </script>
 </body>
 </html>
