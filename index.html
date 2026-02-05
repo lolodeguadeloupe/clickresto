@@ -240,7 +240,31 @@
         .footer-social a {width: 40px; height: 40px; background: rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--white); text-decoration: none; transition: all 0.2s;}
         .mobile-menu-btn {display: none;}
         @media (max-width: 968px) { .hero-container, .affiliation-container, .contact-container { grid-template-columns: 1fr; } .hero-content { order: 1; text-align: center;} .hero-visual { order: 0; margin-bottom: 2rem;} .hero-description { margin: 0 auto 2rem; } .hero-ctas, .hero-stats { justify-content: center; } .footer-container { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 768px) { .nav-links {display: none;} .mobile-menu-btn {display: block;} .hero {padding: 6rem 1.5rem 3rem;} .features, .pricing, .affiliation, .contact {padding: 4rem 1.5rem;} .form-row {grid-template-columns: 1fr;} .footer-container {grid-template-columns: 1fr; text-align: center;} .footer-brand p {max-width: 100%;} .footer-bottom {flex-direction: column; text-align: center;} }
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--background);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                border-bottom: 2px solid var(--secondary);
+                display: none;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--secondary);
+            }
+            .hero {padding: 6rem 1.5rem 3rem;} .features, .pricing, .affiliation, .contact {padding: 4rem 1.5rem;} .form-row {grid-template-columns: 1fr;} .footer-container {grid-template-columns: 1fr; text-align: center;} .footer-brand p {max-width: 100%;} .footer-bottom {flex-direction: column; text-align: center;}
+        }
         .form-success {display: none; background: var(--accent); border: 3px solid var(--secondary); border-radius: 12px; padding: 1.5rem; text-align: center; color: var(--secondary);}
         .form-success.show {display: block;}
         .type-selector {border: none; padding: 0; margin-bottom: 1.5rem;}
@@ -266,7 +290,7 @@
             <a href="#affiliation">Affiliation</a>
             <a href="#contact" class="btn btn-primary">Let's Go!</a>
         </div>
-        <button class="mobile-menu-btn">☰</button>
+        <button class="mobile-menu-btn" aria-expanded="false" aria-label="Menu">☰</button>
     </nav>
     <section class="hero">
         <div class="hero-container">
@@ -542,6 +566,27 @@
         </div>
     </footer>
     <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            // Update button text for accessibility
+            const isOpen = navLinks.classList.contains('show');
+            mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+                mobileMenuBtn.textContent = '☰';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
         // Toggle button handler
         const toggleBtns = document.querySelectorAll('.toggle-btn');
         const typeInput = document.querySelector('input[name="type"]');
