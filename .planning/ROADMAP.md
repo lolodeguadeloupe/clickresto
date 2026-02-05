@@ -28,10 +28,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Three visual steps explain the referral process (Inscription → Recommandation → Commission)
   4. Reward card displays the 50€ commission amount prominently
   5. CTA button links to contact form section
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] TBD during planning
+- [ ] 01-01-PLAN.md — Update affiliation content to 50EUR and add accessibility
 
 ### Phase 2: Contact Form
 **Goal**: Visitors can submit contact requests through a functional form with validation
@@ -72,6 +72,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Affiliation Section | 0/TBD | Not started | - |
+| 1. Affiliation Section | 0/1 | Planned | - |
 | 2. Contact Form | 0/TBD | Not started | - |
 | 3. Firebase Integration | 0/TBD | Not started | - |
