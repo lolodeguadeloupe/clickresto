@@ -71,11 +71,11 @@
 | CTT-04 | Phase 2 | Pending |
 | CTT-05 | Phase 2 | Pending |
 | CTT-06 | Phase 2 | Pending |
+| JS-01 | Phase 2 | Pending |
+| JS-02 | Phase 2 | Pending |
 | BAK-01 | Phase 3 | Pending |
 | BAK-02 | Phase 3 | Pending |
 | BAK-03 | Phase 3 | Pending |
-| JS-01 | Phase 2 | Pending |
-| JS-02 | Phase 2 | Pending |
 | JS-03 | Phase 3 | Pending |
 | JS-04 | Phase 3 | Pending |
 
@@ -86,4 +86,4 @@
 
 ---
 *Requirements defined: 2026-02-05*
-*Last updated: 2026-02-05 after initial definition*
+*Last updated: 2026-02-05 after roadmap creation*
