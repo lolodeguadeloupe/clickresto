@@ -12,7 +12,7 @@ Complete the Clickresto landing page by building out the missing affiliation and
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Affiliation Section** - Build affiliate program HTML with visual steps and reward card
+- [x] **Phase 1: Affiliation Section** - Build affiliate program HTML with visual steps and reward card
 - [ ] **Phase 2: Contact Form** - Add contact section with form validation and basic interactions
 - [ ] **Phase 3: Firebase Integration** - Connect backend and complete lead capture workflow
 
@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 1 plan
 
 Plans:
-- [ ] 01-01-PLAN.md — Update affiliation content to 50EUR and add accessibility
+- [x] 01-01-PLAN.md — Add affiliation section HTML (CSS exists, HTML missing)
 
 ### Phase 2: Contact Form
 **Goal**: Visitors can submit contact requests through a functional form with validation
@@ -44,10 +44,11 @@ Plans:
   4. Client-side validation prevents incomplete submissions
   5. Mobile menu toggle works on small screens
   6. Smooth scroll works when clicking navigation anchors
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] TBD during planning
+- [ ] 02-01-PLAN.md — Contact section HTML and form validation JavaScript
+- [ ] 02-02-PLAN.md — Mobile menu toggle and phase verification
 
 ### Phase 3: Firebase Integration
 **Goal**: Lead submissions are stored in Firebase and users receive confirmation
@@ -72,6 +73,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Affiliation Section | 0/1 | Planned | - |
-| 2. Contact Form | 0/TBD | Not started | - |
+| 1. Affiliation Section | 1/1 | Complete | 2026-02-05 |
+| 2. Contact Form | 0/2 | Ready | - |
 | 3. Firebase Integration | 0/TBD | Not started | - |
