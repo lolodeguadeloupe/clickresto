@@ -31,8 +31,10 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        @media (prefers-reduced-motion: no-preference) {
+            html {
+                scroll-behavior: smooth;
+            }
         }
 
         body {
@@ -1297,22 +1299,22 @@
                         <div class="affiliation-step">
                             <div class="step-number">1</div>
                             <div class="step-content">
-                                <h4>Inscrivez-vous</h4>
+                                <h4>Inscription</h4>
                                 <p>Rejoignez gratuitement notre programme d'affiliation</p>
                             </div>
                         </div>
                         <div class="affiliation-step">
                             <div class="step-number">2</div>
                             <div class="step-content">
-                                <h4>Recommandez</h4>
+                                <h4>Recommandation</h4>
                                 <p>Parlez de Clickresto aux restaurateurs de votre réseau</p>
                             </div>
                         </div>
                         <div class="affiliation-step">
                             <div class="step-number">3</div>
                             <div class="step-content">
-                                <h4>Gagnez</h4>
-                                <p>Recevez 100€ pour chaque restaurant qui signe</p>
+                                <h4>Commission</h4>
+                                <p>Recevez 50€ pour chaque restaurant qui signe</p>
                             </div>
                         </div>
                     </div>
@@ -1324,7 +1326,7 @@
                     <div class="reward-card">
                         <div class="reward-icon">💰</div>
                         <h3>Prime de parrainage</h3>
-                        <div class="reward-amount">100€<span></span></div>
+                        <div class="reward-amount">50€<span></span></div>
                         <p>par restaurant signé grâce à vous</p>
                     </div>
                 </div>
