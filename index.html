@@ -267,6 +267,7 @@
         }
         .form-success {display: none; background: var(--accent); border: 3px solid var(--secondary); border-radius: 12px; padding: 1.5rem; text-align: center; color: var(--secondary);}
         .form-success.show {display: block;}
+        .form-success p {font-weight: 700; color: var(--secondary); margin-bottom: 0;}
         .type-selector {border: none; padding: 0; margin-bottom: 1.5rem;}
         .type-selector legend {font-weight: 700; margin-bottom: 0.5rem; color: var(--secondary);}
         .toggle-group {display: flex; gap: 0.5rem; border: 3px solid var(--secondary); border-radius: 12px; padding: 0.25rem; background: var(--background);}
@@ -276,6 +277,14 @@
         .error-message {color: var(--primary); font-size: 0.875rem; margin-top: 0.25rem; display: block; min-height: 1.25rem;}
         .form-group.error input, .form-group.error textarea {border-color: var(--primary);}
         .required, .required-restaurateur {color: var(--primary);}
+        .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+        .btn-loading { opacity: 0.7; pointer-events: none; }
+        .btn-loading .btn-text { display: none; }
+        .btn-loading .btn-spinner { display: inline-block; }
+        .btn-spinner { display: none; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .form-error { display: none; background: var(--primary); color: var(--white); border: 3px solid var(--secondary); border-radius: 12px; padding: 1rem 1.5rem; margin-bottom: 1rem; font-weight: 500; }
+        .form-error.show { display: block; }
     </style>
 </head>
 <body>
@@ -488,6 +497,7 @@
                     </div>
                 </div>
                 <div class="contact-form">
+                    <div class="form-error" id="formError"></div>
                     <form id="contactForm" novalidate>
                         <fieldset class="form-group type-selector">
                             <legend>Je suis</legend>
@@ -529,10 +539,21 @@
                             <textarea id="message" name="message" rows="5" placeholder="Parle-nous de ton resto et de tes besoins..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                        <div class="hp-field">
+                            <label for="company_url">Website</label>
+                            <input type="text" id="company_url" name="company_url" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span class="btn-text">Envoyer</span>
+                            <span class="btn-spinner"></span>
+                        </button>
                     </form>
-                    <div class="form-success">
-                        <p>Merci ! Nous te recontacterons rapidement.</p>
+                    <div class="form-success" id="formSuccess">
+                        <p>Merci ! Nous vous recontacterons sous 48h.</p>
+                        <button type="button" class="btn btn-primary" id="resetFormBtn" style="margin-top: 1rem;">
+                            Envoyer un autre message
+                        </button>
                     </div>
                 </div>
             </div>
@@ -565,6 +586,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -616,12 +638,51 @@
             });
         });
 
-        // Form validation on submit
-        const form = document.getElementById('contactForm');
-        const formSuccess = document.querySelector('.form-success');
+        // Supabase config (obfuscated)
+        const _sb = [
+            atob('aHR0cDovL3N1cGFiYXNla29uZy1mOHdzMDRzZzg0d2NvY3dvY2c4OGNnOG8uMzcuNTkuMTIxLjQwLnNzbGlwLmlv'),
+            atob('ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SnBjM01pT2lKemRYQmhZbUZ6WlNJc0ltbGhkQ0k2TVRjMk9UZzJNalkyTUN3aVpYaHdJam8wT1RJMU5UTTJNall3TENKeWIyeGxJam9pWVc1dmJpSjkuZjBDV3ZBVHkwaklmY0pTR3d1SjFROExCUFdYVm5fLXppVkNLQWtLak5Dcw==')
+        ];
+        const { createClient } = supabase;
+        const sb = createClient(_sb[0], _sb[1]);
 
-        form.addEventListener('submit', (e) => {
+        // Timeout helper
+        function withTimeout(promise, ms) {
+            return Promise.race([
+                promise,
+                new Promise((_, reject) => setTimeout(() => reject(new Error('TIMEOUT')), ms))
+            ]);
+        }
+
+        // Form validation and submission
+        const form = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        const formError = document.getElementById('formError');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            // Check honeypot
+            const honeypot = document.getElementById('company_url');
+            if (honeypot.value) {
+                // Bot detected - fake success
+                form.style.display = 'none';
+                formSuccess.classList.add('show');
+                return;
+            }
+
+            // Check online status
+            if (!navigator.onLine) {
+                formError.textContent = 'Vous semblez être hors ligne. Vérifiez votre connexion et réessayez.';
+                formError.classList.add('show');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.classList.add('btn-loading');
+            formError.classList.remove('show');
 
             // Clear previous errors
             document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
@@ -674,12 +735,57 @@
 
             if (!isValid) {
                 firstError.focus();
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('btn-loading');
                 return;
             }
 
-            // Mock success (Phase 3 will add Firebase)
-            form.style.display = 'none';
-            formSuccess.classList.add('show');
+            // Prepare data for submission
+            const phoneDigitsOnly = telephone.value.replace(/\s/g, '');
+            const data = {
+                nom: nom.value.trim(),
+                email: email.value.trim(),
+                telephone: phoneDigitsOnly,
+                etablissement: etablissement.value.trim() || null,
+                type: typeInput.value,
+                message: document.getElementById('message').value.trim() || null
+            };
+
+            try {
+                // Submit to Supabase with timeout
+                const { error } = await withTimeout(
+                    sb.from('contacts').insert([data]),
+                    10000
+                );
+
+                if (error) throw error;
+
+                // Success
+                form.style.display = 'none';
+                formSuccess.classList.add('show');
+            } catch (error) {
+                // Error handling
+                if (error.message === 'TIMEOUT') {
+                    formError.textContent = 'Le serveur met trop de temps à répondre. Réessayez dans quelques instants.';
+                } else {
+                    formError.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+                    console.error('Supabase error:', error);
+                }
+                formError.classList.add('show');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('btn-loading');
+            }
+        });
+
+        // Reset form handler
+        document.getElementById('resetFormBtn').addEventListener('click', () => {
+            form.reset();
+            form.style.display = '';
+            formSuccess.classList.remove('show');
+            formError.classList.remove('show');
+            // Reset type toggle to restaurateur
+            document.querySelector('.toggle-btn[data-value="restaurateur"]').click();
         });
 
         function showError(input, message) {
