@@ -30,10 +30,10 @@ Générer des demandes de contact qualifiées de restaurateurs intéressés par 
 
 ## Context
 
-**Template existant :** `landing_page_5.html` contient le design complet (CSS) avec :
+**Template existant :** `landing_page_4.html` (copié vers `index.html`) contient le design complet (CSS) avec :
 - Header/Navigation
 - Hero section
-- Section Prestations (fonctionnalités)
+- Section Fonctionnalités
 - Section Tarifs (500€ + 60€/mois)
 - Footer
 
@@ -48,10 +48,12 @@ Générer des demandes de contact qualifiées de restaurateurs intéressés par 
 - Commission : 0%
 - Programme affiliation : 50€ par restaurant signé
 
-**Design :** Style "Gourmet & Luxueux"
-- Fond noir charbon (#121212)
-- Or vieilli (#C5A47E)
-- Typographies : Cormorant Garamond (titres), Lustria (corps)
+**Design :** Style "Pop & Coloré"
+- Fond rose très clair (#FFF5F5)
+- Corail (#FF6B6B), Indigo (#4D4D9A), Turquoise (#4ECDC4)
+- Typographies : Fredoka One (titres), Poppins (corps)
+- Style playful avec ombres décalées et formes arrondies
+- Ton décontracté ("Ton app qui déchire!", "Let's Go!")
 
 ## Constraints
 
@@ -66,6 +68,7 @@ Générer des demandes de contact qualifiées de restaurateurs intéressés par 
 | Firebase pour backend | Gratuit pour démarrer, facile à intégrer côté client | — Pending |
 | Formulaire unique | Simplifier l'UX, un seul point d'entrée avec sélecteur de type | — Pending |
 | Commission fixe 50€ | Simple à comprendre pour les affiliés | — Pending |
+| Template landing_page_4.html | Style "Pop & Coloré" plus engageant, ton décontracté pour attirer les restaurateurs | — Active |
 
 ---
 *Last updated: 2026-02-05 after initialization*
