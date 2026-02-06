@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:alpine AS production
 
 # Copier la configuration nginx personnalisée
 COPY nginx.conf /etc/nginx/conf.d/default.conf
