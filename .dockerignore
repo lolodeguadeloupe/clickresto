@@ -1,0 +1,10 @@
+.env
+.git
+.gitignore
+.claude
+.planning
+.playwright-mcp
+*.png
+landing_page_*.html
+vibes-selection.html
+README.md

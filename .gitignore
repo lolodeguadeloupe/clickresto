@@ -1,0 +1,5 @@
+.env
+.playwright-mcp/
+*.png
+landing_page_*.html
+vibes-selection.html
