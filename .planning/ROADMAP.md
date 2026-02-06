@@ -51,20 +51,21 @@ Plans:
 - [x] 02-02-PLAN.md — Mobile menu toggle and phase verification
 
 ### Phase 3: Firebase Integration
-**Goal**: Lead submissions are stored in Firebase and users receive confirmation
+**Goal**: Lead submissions are stored in Supabase and users receive confirmation
 **Depends on**: Phase 2
 **Requirements**: BAK-01, BAK-02, BAK-03, JS-03, JS-04
 **Success Criteria** (what must be TRUE):
-  1. Firebase project is configured with Firestore database
-  2. Form submissions save to "contacts" collection in Firestore
-  3. Security rules prevent public reads (write-only for public)
+  1. Supabase contacts table configured with constraints and permissions
+  2. Form submissions save to contacts table in Supabase
+  3. Anon key has INSERT-only access (no public reads)
   4. Form shows loading state during submission
   5. Success message appears after successful submission
   6. Error state is handled if submission fails
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] TBD during planning
+- [ ] 03-01-PLAN.md — SQL migration + Supabase integration in index.html (submission, loading, success, error, honeypot)
+- [ ] 03-02-PLAN.md — Apply migration and verify end-to-end flow
 
 ## Progress
 
@@ -75,4 +76,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Affiliation Section | 1/1 | Complete | 2026-02-05 |
 | 2. Contact Form | 2/2 | Complete | 2026-02-06 |
-| 3. Firebase Integration | 0/TBD | Not started | - |
+| 3. Firebase Integration | 0/2 | Not started | - |
