@@ -1,18 +1,26 @@
 # Phase 1: Affiliation Section - Research
 
-**Researched:** 2026-02-05
+**Researched:** 2026-02-05 (Updated for landing_page_4.html template)
 **Domain:** HTML/CSS Landing Page Development
 **Confidence:** HIGH
 
 ## Summary
 
-Research focused on HTML5 semantic structure, CSS component patterns, and accessibility best practices for landing page sections. The investigation revealed that the existing index.html already contains a fully-styled affiliation section (lines 1288-1333) with modern CSS patterns including CSS Grid, Flexbox, and CSS custom properties.
+Research focused on HTML5 semantic structure, CSS component patterns, and accessibility best practices for landing page sections. The template `landing_page_4.html` (now `index.html`) uses a "Pop & Coloré" design with:
+- **Colors:** Corail (#FF6B6B), Indigo (#4D4D9A), Turquoise (#4ECDC4), Rose clair (#FFF5F5)
+- **Fonts:** Fredoka One (titres), Poppins (corps)
+- **Style:** Playful avec ombres décalées (box-shadow: 4-8px), formes arrondies (border-radius: 12-24px)
 
-The primary work for this phase is content alignment rather than building from scratch. The existing template follows 2026 best practices for semantic HTML, responsive design, and accessibility. The affiliation section currently displays 100€ commission but requirements specify 50€, requiring a simple content update.
+**Important:** Le CSS pour la section affiliation existe (lignes 197-214) mais le HTML n'est PAS présent. Le travail consiste à AJOUTER le HTML entre la section pricing (#tarifs) et le footer.
 
-The technical foundation is solid: semantic `<section>` elements with proper `id` attributes for anchor navigation, CSS Grid for layout, Flexbox for step indicators, and CSS custom properties for consistent theming. All patterns align with current web standards and accessibility guidelines.
+Le template inclut les classes CSS nécessaires :
+- `.affiliation` - section container
+- `.affiliation-container` - grid layout 2 colonnes
+- `.affiliation-content` / `.affiliation-steps` - contenu et étapes
+- `.affiliation-step` / `.step-number` / `.step-content` - indicateurs d'étapes
+- `.reward-card` / `.reward-amount` / `.reward-icon` - carte de récompense
 
-**Primary recommendation:** Update existing affiliation section content to match requirements (50€ commission), verify accessibility attributes, and ensure all anchor navigation works correctly.
+**Primary recommendation:** Ajouter le HTML de la section affiliation en utilisant les classes CSS existantes, avec commission de 50€, 3 étapes visuelles, et CTA vers #contact.
 
 ## Standard Stack
 
