@@ -29,10 +29,9 @@ app.post('/api/contacts', async (req, res) => {
     );
     res.json({ success: true });
   } catch (err) {
-    console.error('Insert error:', err.message);
+    console.error('Insert error:', err.message, err.stack);
     res.status(500).json({ error: 'Erreur serveur' });
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(3000, () => console.log('Server running on port 3000'));
