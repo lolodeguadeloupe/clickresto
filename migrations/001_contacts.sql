@@ -16,9 +16,5 @@ ALTER TABLE contacts ADD CONSTRAINT email_format
 ALTER TABLE contacts ADD CONSTRAINT phone_format
   CHECK (telephone ~ '^0[1-9][0-9]{8}$');
 
-ALTER TABLE contacts DISABLE ROW LEVEL SECURITY;
-
-GRANT INSERT ON contacts TO anon;
-
 CREATE INDEX idx_contacts_created_at ON contacts(created_at DESC);
 CREATE INDEX idx_contacts_status ON contacts(status);

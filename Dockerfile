@@ -1,9 +1,13 @@
-FROM nginx:alpine
+FROM node:20-alpine
 
-# Copier le fichier HTML dans le répertoire nginx
-COPY index.html /usr/share/nginx/html/index.html
+WORKDIR /app
 
-# Exposer le port 80
-EXPOSE 80
+COPY package.json ./
+RUN npm install --production
 
-# Nginx utilise un port par défaut, pas besoin de commande CMD personnalisée
+COPY server.js ./
+COPY index.html ./public/
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]
